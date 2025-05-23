@@ -1,16 +1,27 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
-// import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
+import autoprefixer from 'autoprefixer';
+import postcssNested from 'postcss-nested';
+import cssnano from 'cssnano';
 
-// https://astro.build/config
 export default defineConfig({
   site: process.env.PUBLIC_BASE_URL,
   output: 'server',
   vite: {
     ssr: {
       external: ['node:async_hooks'],
+    },
+  },
+
+  css: {
+    postcss: {
+      plugins: [
+        autoprefixer({ flexbox: 'no-2009' }),
+        postcssNested(),
+        cssnano(),
+      ],
     },
   },
   prefetch: {
@@ -22,8 +33,8 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  experimental: {
-    actions: true,
-  },
   integrations: [react(), sitemap()],
+  devToolbar: {
+    enabled: false,
+  },
 });

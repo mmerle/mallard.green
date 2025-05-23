@@ -11,14 +11,12 @@
   }
 }
 
-.type {
-  &-primary {
-    background: var(--accent);
-    color: var(--black);
-  }
+.type-primary {
+  background: var(--accent);
+  color: var(--black);
+}
 
-  &-secondary {
-    background: var(--fg);
-    color: var(--bg);
-  }
+.type-secondary {
+  background: var(--fg);
+  color: var(--bg);
 }

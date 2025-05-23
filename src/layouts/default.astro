@@ -1,11 +1,11 @@
 ---
 const { title, description } = Astro.props;
-import "@styles/global.css";
-import "@styles/utils.css";
-import Header from "@components/header.astro";
-import Footer from "@components/footer.astro";
-import GridDebugger from "@components/grid-debugger/index.jsx";
-import BizCard from "@components/biz-card/index.jsx";
+import '~/styles/global.css';
+import '~/styles/utils.css';
+import Header from '~/components/header.astro';
+import Footer from '~/components/footer.astro';
+import GridDebugger from '~/components/grid-debugger/index.jsx';
+import BizCard from '~/components/biz-card/index.jsx';
 ---
 
 <html lang="en-CA">
@@ -52,20 +52,20 @@ import BizCard from "@components/biz-card/index.jsx";
   // viewport
   function onWindowResize() {
     document.documentElement.style.setProperty(
-      "--vh",
-      document.documentElement.clientHeight * 0.01 + "px",
+      '--vh',
+      document.documentElement.clientHeight * 0.01 + 'px',
     );
   }
 
-  window.addEventListener("resize", onWindowResize);
+  window.addEventListener('resize', onWindowResize);
   onWindowResize();
 
-  window.addEventListener("beforeunload", () => {
-    window.removeEventListener("resize", onWindowResize);
+  window.addEventListener('beforeunload', () => {
+    window.removeEventListener('resize', onWindowResize);
   });
 
   // lenis
-  import Lenis from "lenis";
+  import Lenis from 'lenis';
   const lenis = new Lenis({
     lerp: 0.1,
   });
@@ -78,16 +78,16 @@ import BizCard from "@components/biz-card/index.jsx";
   requestAnimationFrame(onRaf);
 
   // persistent theme
-  const themes = ["light", "dark", "system"];
+  const themes = ['light', 'dark', 'system'];
   const themeSwitcher = document.querySelector('[name="themeSwitcher"]');
   const currentTheme =
     document.cookie.replace(
       /(?:(?:^|.*;\s*)theme\s*\=\s*([^;]*).*$)|^.*$/,
-      "$1",
-    ) || "system";
+      '$1',
+    ) || 'system';
 
   function changeTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }
 
   function saveTheme(theme) {
@@ -98,14 +98,14 @@ import BizCard from "@components/biz-card/index.jsx";
 
   function cycleTheme() {
     const currentIndex = themes.indexOf(
-      document.documentElement.getAttribute("data-theme"),
+      document.documentElement.getAttribute('data-theme'),
     );
     const nextTheme = themes[(currentIndex + 1) % themes.length];
     changeTheme(nextTheme);
     saveTheme(nextTheme);
   }
 
-  themeSwitcher?.addEventListener("click", cycleTheme);
+  themeSwitcher?.addEventListener('click', cycleTheme);
 
   changeTheme(currentTheme);
 </script>

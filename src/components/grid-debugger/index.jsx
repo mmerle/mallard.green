@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useCallback } from 'react';
-import { useWindowSize } from '@hooks/use-window-size';
-import useStore from '@libs/store';
+import { useWindowSize } from '~/hooks/use-window-size';
+import useStore from '~/libs/store';
 import cn from 'clsx';
 import s from './grid-debugger.module.css';
 
@@ -11,7 +11,9 @@ export default function GridDebugger() {
   const columns = useMemo(() => {
     if (typeof window !== 'undefined') {
       return parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--grid-columns'),
+        getComputedStyle(document.documentElement).getPropertyValue(
+          '--grid-columns'
+        )
       );
     }
     return 0;
@@ -23,7 +25,7 @@ export default function GridDebugger() {
         toggleGridOverlayVisibility();
       }
     },
-    [toggleGridOverlayVisibility],
+    [toggleGridOverlayVisibility]
   );
 
   useLayoutEffect(() => {
@@ -50,7 +52,10 @@ export function GridDebuggerToggle({ children, className }) {
   const { toggleGridOverlayVisibility } = useStore();
 
   return (
-    <button onClick={toggleGridOverlayVisibility} className={cn(s.toggle, className)}>
+    <button
+      onClick={toggleGridOverlayVisibility}
+      className={cn(s.toggle, className)}
+    >
       {children}
     </button>
   );

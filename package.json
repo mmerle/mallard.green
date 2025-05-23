@@ -13,32 +13,33 @@
     "build-cf-types": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.2.6",
+    "@astrojs/cloudflare": "^12.5.3",
     "@astrojs/partytown": "^2.1.0",
-    "@astrojs/react": "^3.4.0",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.1.5",
-    "@react-three/drei": "^9.105.6",
-    "@react-three/fiber": "^8.16.6",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "astro": "^4.9.2",
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^9.1.2",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "astro": "^5.8.0",
     "clsx": "^2.1.1",
     "cva": "npm:class-variance-authority@^0.7.0",
-    "framer-motion": "^11.2.6",
     "lenis": "^1.0.45",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "resend": "^3.2.0",
-    "three": "^0.164.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "resend": "^4.5.1",
+    "three": "^0.176.0",
     "typescript": "^5.4.5",
-    "zustand": "^4.5.2"
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
-    "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^9.5.14",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.14.0",
-    "wrangler": "^3.57.1"
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.7",
+    "postcss-nested": "^7.0.2",
+    "postcss-preset-env": "^10.1.6",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.16.1"
   }
 }

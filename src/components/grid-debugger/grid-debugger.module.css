@@ -6,7 +6,7 @@
   pointer-events: none;
   opacity: 0;
 
-  &[data-visible='true'] {
+  &[data-visible="true"] {
     opacity: 1;
   }
 }

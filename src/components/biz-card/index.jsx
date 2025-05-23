@@ -1,6 +1,6 @@
 import cn from 'clsx';
 import s from './biz-card.module.css';
-import useStore from '@libs/store';
+import useStore from '~/libs/store';
 
 export default function BizCard() {
   const { isBizCardVisible, toggleBizCard } = useStore();
