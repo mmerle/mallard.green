@@ -3,7 +3,7 @@ import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import autoprefixer from 'autoprefixer';
-import postcssNested from 'postcss-nested';
+import postcssnesting from 'postcss-nesting';
 import cssnano from 'cssnano';
 
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({ flexbox: 'no-2009' }),
-        postcssNested(),
+        postcssnesting(),
         cssnano(),
       ],
     },
