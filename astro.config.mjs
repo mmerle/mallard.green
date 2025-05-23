@@ -13,8 +13,15 @@ export default defineConfig({
     ssr: {
       external: ['node:async_hooks'],
     },
+    resolve: {
+      // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
+      // Without this, MessageChannel from node:worker_threads needs to be polyfilled.
+      // https://github.com/withastro/astro/issues/12824
+      alias: import.meta.env.PROD && {
+        'react-dom/server': 'react-dom/server.edge',
+      },
+    },
   },
-
   css: {
     postcss: {
       plugins: [
