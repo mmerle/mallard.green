@@ -19,7 +19,7 @@ export const links: LinksFunction = () => [
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
   {
     rel: 'preload',
-    href: 'https://fonts.mallard.green/HelveticaNow/Helvetica-Now.woff2',
+    href: 'https://fonts.mallard.green/HelveticaNow/HelveticaNow-Variable.woff2',
     as: 'font',
     type: 'font/woff2',
     crossOrigin: 'anonymous',
