@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  padding: max(6vw, 1rem);
+}
+
+.title {
+  font: 600 normal clamp(10px, 8.33vw, 160px) / 0.8 var(--font-heading);
+  text-align: center;
+}

@@ -1,6 +1,6 @@
-import s from './button.module.css';
 import { cva } from 'cva';
 import { useRef } from 'react';
+import s from './button.module.css';
 
 const variants = cva(s.button, {
   variants: {

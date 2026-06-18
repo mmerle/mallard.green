@@ -1,9 +1,30 @@
-@import 'reset.css';
+@import "./reset.css";
+
+@font-face {
+  font-family: "NaN Jaune";
+  src: url("../assets/fonts/NaNJaune-Maxi-VF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Now";
+  src: url("https://fonts.mallard.green/HelveticaNow/Helvetica-Now.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-media --tablet (min-width: 768px);
+@custom-media --desktop (min-width: 1024px);
+@custom-media --wide (min-width: 1440px);
 
 :root {
-  --white: #fff;
+  --white: #f6f8f4;
   --black: #171717;
-  --green: #174e43;
+  --green: #00201b;
   --mono1: #fcfcfc;
   --mono2: #f8f8f8;
   --mono3: #f3f3f3;
@@ -20,11 +41,11 @@
   --accent: var(--green);
 
   --font-fallback:
-    -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   --font-heading: var(--font-nan-jaune), var(--font-fallback);
-  --font-body: system-ui, var(--font-fallback);
+  --font-body: "Helvetica Now", var(--font-fallback);
 
   --text-xxl: 30px;
   --text-xl: 24px;
@@ -42,7 +63,7 @@
   --grid-width: calc(100vw - var(--grid-margin) * 2);
   --grid-column-width: calc(
     (var(--grid-width) - ((var(--grid-columns) - 1) * var(--grid-gutter))) /
-      var(--grid-columns)
+    var(--grid-columns)
   );
 
   --radius-xl: 14px;
@@ -74,21 +95,27 @@
 
   accent-color: var(--accent);
 
-  @media (min-width: 768px) {
+  @media (--tablet) {
     --grid-columns: 8;
   }
 
-  @media (min-width: 1024px) {
+  @media (--desktop) {
     --grid-columns: 12;
   }
 
-  @media (min-width: 1440px) {
+  @media (--wide) {
     --grid-gutter: 1.4vw;
     --grid-margin: 1.4vw;
   }
 }
 
-[data-theme='dark'] {
+@supports (color: lab(0% 0 0)) {
+  :root {
+    --green: lab(10% -13.7 -0.211);
+  }
+}
+
+[data-theme="dark"] {
   color-scheme: dark;
   --white: #fef9e6;
   --mono1: #1a1a1a;
@@ -105,7 +132,7 @@
   --bg: var(--black);
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   color-scheme: light;
   --mono1: #fcfcfc;
   --mono2: #f8f8f8;
@@ -134,11 +161,10 @@
 }
 
 body {
-  min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
   color: var(--white);
   background: var(--green);
-  font: 400 normal clamp(16px, 1.11vw, 21px) / normal var(--font-heading);
+  font: 400 normal clamp(16px, 1.11vw, 21px) / 1.4 var(--font-body);
   overflow-x: hidden;
 }
 

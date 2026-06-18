@@ -1,0 +1,9 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--grid-margin);
+}
+
+.logo {
+  mix-blend-mode: difference;
+}

@@ -1,23 +1,26 @@
-import { useLayoutEffect, useMemo, useCallback } from 'react';
-import { useWindowSize } from '~/hooks/use-window-size';
-import useStore from '~/libs/store';
 import cn from 'clsx';
+import { useCallback, useLayoutEffect } from 'react';
+import { useWindowSize } from '~/hooks/use-window-size';
+import useStore from '~/utils/store';
 import s from './grid-debugger.module.css';
 
 export default function GridDebugger() {
   const { isGridOverlayVisible, toggleGridOverlayVisibility } = useStore();
-  const { width: windowWidth, height: windowHeight } = useWindowSize();
+  useWindowSize();
 
-  const columns = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          '--grid-columns'
-        )
-      );
-    }
-    return 0;
-  }, [windowWidth, windowHeight]);
+  const columns =
+    typeof window === 'undefined'
+      ? 0
+      : parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            '--grid-columns',
+          ),
+          10,
+        );
+  const columnKeys = Array.from(
+    { length: columns },
+    (_, index) => `grid-column-${index}`,
+  );
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -25,7 +28,7 @@ export default function GridDebugger() {
         toggleGridOverlayVisibility();
       }
     },
-    [toggleGridOverlayVisibility]
+    [toggleGridOverlayVisibility],
   );
 
   useLayoutEffect(() => {
@@ -39,7 +42,7 @@ export default function GridDebugger() {
     <div className={s.overlay} data-visible={isGridOverlayVisible}>
       <div className={s.container}>
         <div className={cn(s.row, s.debugger)}>
-          {Array.from({ length: columns }).map((_, key) => (
+          {columnKeys.map((key) => (
             <span key={key} className={s.col}></span>
           ))}
         </div>
@@ -53,6 +56,7 @@ export function GridDebuggerToggle({ children, className }) {
 
   return (
     <button
+      type="button"
       onClick={toggleGridOverlayVisibility}
       className={cn(s.toggle, className)}
     >
