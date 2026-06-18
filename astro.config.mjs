@@ -1,10 +1,12 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import autoprefixer from 'autoprefixer';
-import postcssnesting from 'postcss-nesting';
+import postcssNesting from 'postcss-nesting';
 import cssnano from 'cssnano';
+
+import svelte from '@astrojs/svelte';
 
 export default defineConfig({
   site: process.env.PUBLIC_BASE_URL,
@@ -26,7 +28,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({ flexbox: 'no-2009' }),
-        postcssnesting(),
+        postcssNesting(),
         cssnano(),
       ],
     },
@@ -34,13 +36,31 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'viewport',
   },
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.local(),
+        name: 'NaN Jaune',
+        cssVariable: '--font-nan-jaune',
+        options: {
+          variants: [
+            {
+              weight: '100 900',
+              style: 'normal',
+              src: ['./src/assets/fonts/NaNJaune-Maxi-VF.woff2'],
+            },
+          ],
+        },
+      },
+    ],
+  },
   adapter: cloudflare({
     imageService: 'passthrough',
     platformProxy: {
       enabled: true,
     },
   }),
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), svelte()],
   devToolbar: {
     enabled: false,
   },
