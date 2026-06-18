@@ -1,0 +1,15 @@
+.nav {
+  position: relative;
+  z-index: var(--layer-overlay);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}

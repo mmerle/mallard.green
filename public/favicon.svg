@@ -1,7 +1,14 @@
-<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Mallard Green favicon</title>
   <style>
     :root {
-      --fill-color: #174e43;
+      --fill-color: #00201b;
+    }
+
+    @supports (color: lab(0% 0 0)) {
+      :root {
+        --fill-color: lab(10% -13.7 -0.211);
+      }
     }
   </style>
 

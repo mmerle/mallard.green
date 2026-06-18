@@ -1,13 +1,24 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "include": ["src", "workers", "vite.config.ts", "react-router.config.ts"],
+  "exclude": ["build", "dist", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
-    "strict": false,
+    "strict": true,
     "types": ["@cloudflare/workers-types/2023-07-01"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@styles/*": ["src/styles/*"]
+      "~/*": ["./src/*"]
     }
   }
 }
